@@ -1,0 +1,10 @@
+ng g c service-name
+
+add path to app-routing-module.ts
+
+{path: 'service-name':component:ServicesComponent, canActivate:[AuthGuard]}
+
+Add service to desired html file:
+
+<a class='nav-link' [routerLink]="['/services']">Services</a>
+

@@ -1,0 +1,22 @@
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let company of companies;">
+                <td>{{company._id}}</td>
+                <td>{{company.name}}</td>
+                <td><a routerLink="/edit-company">Edit Company</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a routerLink="/add-company">Add New Company</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
