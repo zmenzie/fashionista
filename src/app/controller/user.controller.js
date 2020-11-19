@@ -21,6 +21,7 @@ var LoginUser = (req, res) => {
         else {
             console.log("Input: " + req.body.email);
             console.log("Type: " + typeof data);
+            console.log("Data: " + data);
             console.log("Email: " + data[0].email);
             console.log('-------------------------');
             res.json(data)

@@ -16,6 +16,7 @@ export class CartComponent implements OnInit {
 	total: number = 0;
 	myProduct: Product;
 	item: Item;
+	cart: any = [];
 
 	constructor(
 		// DI helps pass information from url to next component
@@ -38,27 +39,68 @@ export class CartComponent implements OnInit {
 
 					// NEW STUFF BELOW
 
-					if (JSON.parse(localStorage.getItem('cart'))[0] == null) {
-						console.log("localStorage True");
-						let cart: any = [];
-						cart.push(JSON.stringify(this.item));
-						localStorage.setItem('cart', JSON.stringify(cart));
+					// True if cart is empty
+					console.log("if (" + JSON.parse(localStorage.getItem('cart')) + " == '')");
+					if (JSON.parse(localStorage.getItem('cart')) == '') {
+						console.log("localStorage empty");
+						// let cart: any = [];
+						this.cart.push(JSON.stringify(this.item));
+						localStorage.setItem('cart', JSON.stringify(this.cart));
+						console.log("first item inserted!")
 					}
+					// False if cart has items
 					else {
 						let cart: any = JSON.parse(localStorage.getItem('cart'));
-						console.log("Local Storage: " + JSON.parse(localStorage.getItem('cart'))[0]);
-						let index: number = -1;
-						for (var i = 0; i < cart.length; i++) {
-							let item: Item = JSON.parse(cart[i]);
-							if (item.product.id == id) {
-								index = i;
+						//console.log("Local Storage: " + JSON.parse(localStorage.getItem('cart'))[0]);
+						let index: string = "-1";
+						// for (var i = 0; i < cart.length; i++) {
+						// 	// let item: Item = JSON.parse(cart[i]);
+						// 	let item: Item = JSON.parse(cart[i]);
+						// 	console.log("Type: " + typeof item);
+						// 	console.log("Cart item " + i + " Reg: " + item);
+						// 	console.log("Cart item " + i + " Product: " + item.product);
+						// 	console.log("Cart item " + i + " Product ID: " + item.product.id);
+						// 	console.log("---------------------------------");
+						// 	console.log("Type: " + typeof cart[i]);
+						// 	console.log("Cart item " + i + " Reg: " + cart[i]);
+						// 	console.log("*---------------------------------*");
+						// 	// Break if item is already in cart
+						// 	if (item.product.id == id) {
+						// 		index = i;
+						// 		break;
+						// 	}
+						// }
+
+						let i = 0;
+						for (let cartElement of cart) {
+							let item: Item = JSON.parse(cartElement);
+
+							console.log("Type: " + typeof item);
+							console.log("Cart item " + i + " Reg: " + item);
+							console.log("Cart item " + i + " Product: " + item.product);
+							console.log("Cart item " + i + " Product ID: " + item.product[0]._id);
+							console.log("Cart item " + i + " Str: " + JSON.stringify(item));
+							console.log("Cart item " + i + " Str: " + JSON.stringify(item.product));
+							console.log("Cart item " + i + " Str: " + JSON.stringify(item.product[0]._id));
+							console.log("---------------------------------");
+							
+							// Break if item is already in cart
+							if (item.product[0]._id == id) {
+								index = i.toString();
 								break;
 							}
+							i++;
 						}
-						if (index == -1) {
+
+						// True if item is not in cart
+						if (index == "-1") {
+							console.log("New item added!");
 							cart.push(JSON.stringify(this.item));
 							localStorage.setItem('cart', JSON.stringify(cart));
-						} else {
+						}
+						// False if item is already in cart
+						else {
+							console.log("Item quantity updated!");
 							let item: Item = JSON.parse(cart[index]);
 							item.quantity += 1;
 							cart[index] = JSON.stringify(item);
@@ -71,7 +113,7 @@ export class CartComponent implements OnInit {
 
 				// PASTE NEW STUFF BACK HERE IF NEEDED
 
-				
+
 			}
 			else {
 				this.loadCart();
@@ -98,7 +140,7 @@ export class CartComponent implements OnInit {
 		let index: number = -1;
 		for (var i = 0; i < cart.length; i++) {
 			let item: Item = JSON.parse(cart[i]);
-			if (item.product.id == id) {
+			if (item.product._id == id) {
 				cart.splice(i, 1);
 				break;
 			}

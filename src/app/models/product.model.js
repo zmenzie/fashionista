@@ -6,7 +6,7 @@ var ProductSchema = mongoose.Schema;
 var ProductSchemaRef = new ProductSchema({
     _id:String,
     name:String,
-    price:String,
+    price:Number,
     photo:String
 });
 
