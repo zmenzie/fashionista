@@ -131,7 +131,7 @@ export class CartComponent implements OnInit {
 				product: item.product,
 				quantity: item.quantity
 			});
-			this.total += item.product.price * item.quantity;
+			this.total += item.product[0].price * item.quantity;
 		}
 	}
 
