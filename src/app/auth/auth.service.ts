@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment';
+import { User } from '../models/user';
 
 const jwt = new JwtHelperService();
 
@@ -22,6 +23,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.decodedToken = JSON.parse(localStorage.getItem('auth_meta')) || new DecodedToken();
+  }
+
+  getUsers(): Observable<User[]> {
+    const URI = this.uriseg + '/userFromDb';
+    return this.http.get<User[]>(URI);
   }
 
   public register(userData: any): Observable<any> {

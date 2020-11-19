@@ -21,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     EditCompanyComponent,
     ProductsListComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    UsersListComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
