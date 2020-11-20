@@ -43,8 +43,15 @@ var StoreProductInfo = (req, res) => {
 var UpdateProductInfo = (req, res) => {
     var updateId = req.body._id;
     var updateName = req.body.name;
+    var updatePrice = req.body.price;
+    var updatePhoto = req.body.photo;
 
-    ProductModel.update({ _id: updateId }, { $set: { name: updateName } }, (err, result) => {
+    console.log("ID: " + JSON.stringify(updateId));
+    console.log("Name: " + JSON.stringify(updateName));
+    console.log("Price: " + JSON.stringify(updatePrice));
+    console.log("Photo: " + JSON.stringify(updatePhoto));
+
+    ProductModel.update({ _id: updateId }, { $set: { name: updateName, price: updatePrice, photo: updatePhoto } }, (err, result) => {
         if (err) res.json({"msg":"Invalid data"});
         if (result.nModified>0) {
             res.json({"msg":"Record updated successfully"});
@@ -58,6 +65,8 @@ var UpdateProductInfo = (req, res) => {
 
 var DeleteProductInfo = (req, res) => {
     var deleteId = req.params.id;
+    console.log(req.params)
+    console.log(deleteId)
     if (deleteId == null) {
         res.json({ "msg": "Please enter Id" });
     }

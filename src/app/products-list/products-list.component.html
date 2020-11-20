@@ -15,7 +15,9 @@
                 <td>{{product.name}}</td>
                 <td>{{product.price}}</td>
                 <td><img src="{{product.photo}}" width="250" height="100"></td>
-                <td><a routerLink="/edit-product">Edit Product</a></td>
+                <td><a [routerLink]="['/edit-product']" [queryParams]= 
+                    "{_id:product._id, name:product.name, price:product.price, photo:product.photo}">Edit</a>
+                </td>
             </tr>
             <tr>
                 <td></td>

@@ -31,11 +31,13 @@ export class ProductService {
         return this.http.post(URI, productData);
     }
 
-    updateProductById(product: Product, id: any): Observable<Product> {
-        return this.http.put<Product>(`${this.productUrl}/${id}`, product);
+    updateProduct(productData: any): Observable<Product> {
+        const URI = this.productUrl + '/updateProduct';
+        return this.http.put<Product>(URI, productData);
     }
 
-    deleteProductById(id: any): Observable<Product> {
-        return this.http.delete<Product>(`${this.productUrl}/${id}`);
+    deleteProduct(productData: any): Observable<{}> {
+        const URI = this.productUrl + '/deleteProductById/' + productData;
+        return this.http.delete(URI);
     }
 }
