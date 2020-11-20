@@ -18,7 +18,7 @@ export class AddUserComponent implements OnInit {
   }
 
   register(): void {
-    //console.log(this.formData);
+    console.log(this.formData);
     this.errors = [];
     this.auth.register(this.formData)
       .subscribe(() => {

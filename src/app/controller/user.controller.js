@@ -47,6 +47,7 @@ var StoreUserInfo = (req, res) => {
     // console.log(req.body.password);
 
     let user = new UserModel({
+        _id: req.body._id,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
@@ -69,12 +70,20 @@ var UpdateUserInfo = (req, res) => {
     var updateEmail = req.body.email;
     var updatePassword = req.body.password;
 
+    console.log("req.body: " + JSON.stringify(req.body));
+    console.log("ID: " + JSON.stringify(updateId));
+    console.log("ID: " + JSON.stringify(updateUsername));
+    console.log("ID: " + JSON.stringify(updateEmail));
+    console.log("ID: " + JSON.stringify(updatePassword));
+
     UserModel.update({ _id: updateId }, { $set: { username: updateUsername, email: updateEmail, password: updatePassword } }, (err, result) => {
         if (err) res.json({ "msg": "Invalid data" });
         if (result.nModified > 0) {
+            console.log("success")
             res.json({ "msg": "User updated successfully" });
         }
         else {
+            console.log("fail")
             res.json({ "msg": "User failed to update" });
         }
     });

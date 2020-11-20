@@ -3,6 +3,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Password</th>
@@ -10,10 +11,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of users;">
+                <td>{{user._id}}</td>
                 <td>{{user.username}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.password}}</td>
-                <td><a routerLink="/edit-user">Edit User</a></td>
+                <td><a [routerLink]="['/edit-user']" [queryParams]= 
+                    "{_id:user._id, username:user.username, email:user.email, password:user.password}">Edit</a>
+                </td>
             </tr>
             <tr>
                 <td></td>

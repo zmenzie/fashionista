@@ -25,7 +25,11 @@ export class AuthService {
     this.decodedToken = JSON.parse(localStorage.getItem('auth_meta')) || new DecodedToken();
   }
 
-  getUsers(): Observable<User[]> {
+  public updateUser(userData: any): Observable<User[]> {
+    const URI = this.uriseg + '/updateUser';
+    return this.http.put<User[]>(URI, userData);
+  }
+  public getUsers(): Observable<User[]> {
     const URI = this.uriseg + '/userFromDb';
     return this.http.get<User[]>(URI);
   }
