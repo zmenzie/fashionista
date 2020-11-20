@@ -29,6 +29,13 @@ export class AuthService {
     const URI = this.uriseg + '/updateUser';
     return this.http.put<User[]>(URI, userData);
   }
+
+  public deleteUser(userData: any): Observable<{}> {
+    const URI = this.uriseg + '/deleteUserById/' + userData;
+    console.log(URI);
+    return this.http.delete(URI);
+  }
+
   public getUsers(): Observable<User[]> {
     const URI = this.uriseg + '/userFromDb';
     return this.http.get<User[]>(URI);

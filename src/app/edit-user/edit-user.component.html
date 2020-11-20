@@ -10,8 +10,7 @@
                         </ul>
                     </div>
                     <label for="_id">ID (Cannot be changed)</label>
-                    <input type="text" class="form-control" [(ngModel)]="this._id" name="id" #id="ngModel"
-                        required>
+                    <input type="text" class="form-control" [(ngModel)]="this._id" name="id" #id="ngModel" required>
                 </div>
                 <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
                     <div *ngIf="id.errors.required">
@@ -67,8 +66,11 @@
                         Confirm Password is required
                     </div>
                 </div>
-                <button (click)="updateUser()" type="submit" class="btn btn-warning"
-                    [disabled]="!registerForm.form.valid">Update</button>
+                <div class="container">
+                    <button (click)="updateUser()" style="float: left" type="submit" class="btn btn-warning"
+                        [disabled]="!registerForm.form.valid">Update</button>
+                    <button (click)="deleteUser()" style="float: right" type="submit" class="btn btn-danger">Delete User</button> 
+                </div>
             </form>
         </div>
     </div>

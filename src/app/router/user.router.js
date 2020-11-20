@@ -18,7 +18,7 @@ router.post("/register", UserController.StoreUserInfo);
 router.put("/updateUser", UserController.UpdateUserInfo);
 
 // localhost:5000/users/deleteUserById/100
-router.delete("/deleteUserById/:id", UserController.DeleteUserInfo);
+router.delete("/deleteUserById/:_id", UserController.DeleteUserInfo);
 
 module.exports = router;
 

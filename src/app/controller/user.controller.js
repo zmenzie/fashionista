@@ -91,7 +91,9 @@ var UpdateUserInfo = (req, res) => {
 }
 
 var DeleteUserInfo = (req, res) => {
-    var deleteId = req.params.id;
+    var deleteId = req.params._id;
+    console.log(req.params);
+    console.log(deleteId);
     if (deleteId == null) {
         res.json({ "msg": "Please enter Id" });
     }

@@ -54,4 +54,18 @@ export class EditUserComponent implements OnInit {
         });
   }
 
+  deleteUser(): void {
+    console.log(this._id);
+    this.errors = [];
+
+    this.auth.deleteUser(this._id)
+      .subscribe(() => {
+        this.router.navigate(['/users-list'], { queryParams: { registered: 'success' } });
+      },
+        (errorResponse) => {
+          this.errors.push(errorResponse.error.error);
+        });
+
+  }
+
 }
