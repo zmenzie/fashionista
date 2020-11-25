@@ -31,12 +31,14 @@ export class CompanyService {
     return this.http.post(URI, companyData);
   }
 
-  updateCompanyById(company: Company, id: any): Observable<Company> {
-    return this.http.put<Company>(`${this.companyUrl}/${id}`, company, httpOptions);
+  updateCompany(companyData: any): Observable<Company> {
+    const URI = this.companyUrl + '/updateCompany'
+    return this.http.put<Company>(URI, companyData);
   }
 
-  deleteCompanyById(id: any): Observable<Company> {
-    return this.http.delete<Company>(`${this.companyUrl}/${id}`);
+  deleteCompany(companyData: any): Observable<{}> {
+    const URI = this.companyUrl + '/deleteCompanyById/' + companyData;
+    return this.http.delete(URI);
   }
 
 }

@@ -11,7 +11,8 @@
             <tr *ngFor="let company of companies;">
                 <td>{{company._id}}</td>
                 <td>{{company.name}}</td>
-                <td><a routerLink="/edit-company">Edit Company</a></td>
+                <td><a [routerLink]="['/edit-company']" [queryParams]="{_id:company._id, name:company.name }">Edit</a>
+                </td>
             </tr>
             <tr>
                 <td></td>

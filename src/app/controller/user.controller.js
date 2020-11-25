@@ -72,9 +72,9 @@ var UpdateUserInfo = (req, res) => {
 
     console.log("req.body: " + JSON.stringify(req.body));
     console.log("ID: " + JSON.stringify(updateId));
-    console.log("ID: " + JSON.stringify(updateUsername));
-    console.log("ID: " + JSON.stringify(updateEmail));
-    console.log("ID: " + JSON.stringify(updatePassword));
+    console.log("Username: " + JSON.stringify(updateUsername));
+    console.log("Email: " + JSON.stringify(updateEmail));
+    console.log("Password: " + JSON.stringify(updatePassword));
 
     UserModel.update({ _id: updateId }, { $set: { username: updateUsername, email: updateEmail, password: updatePassword } }, (err, result) => {
         if (err) res.json({ "msg": "Invalid data" });

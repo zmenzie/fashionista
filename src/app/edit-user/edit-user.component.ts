@@ -43,7 +43,7 @@ export class EditUserComponent implements OnInit {
     }
 
     console.log(this.formData);
-    this.errors = [];
+    // this.errors = [];
 
     this.auth.updateUser(this.formData)
       .subscribe(() => {
@@ -56,7 +56,7 @@ export class EditUserComponent implements OnInit {
 
   deleteUser(): void {
     console.log(this._id);
-    this.errors = [];
+    // this.errors = [];
 
     this.auth.deleteUser(this._id)
       .subscribe(() => {
