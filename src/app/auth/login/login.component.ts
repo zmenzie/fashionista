@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.errors = [];
-    this.auth.login(this.loginForm.value).subscribe((token) => {
+    this.auth.login(this.loginForm.value).subscribe(token => {
       this.router.navigate(['/'], { queryParams: { loggedin: 'success' } });
     },
       (errorResponse) => {

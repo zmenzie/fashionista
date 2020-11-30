@@ -1,4 +1,9 @@
 var UserModel = require("../models/user.model");
+const jwt = require("jwt-simple");
+
+// replaced config.jwtSecret
+const secret = 'secret'
+
 
 // Retrieve User Details from Database
 
@@ -12,22 +17,32 @@ var GetUserFromDb = (req, res) => {
 
 // Compare input data to database
 var LoginUser = (req, res) => {
-    var userInfo = req.body.email;
-    UserModel.find({ email: userInfo }, (err, data) => {
+    var userEmail = req.body.email;
+    var userPassword = req.body.password;
+    UserModel.find({ email: userEmail }, (err, user) => {
         if (err) {
-            console.log('ERROR: LoginUser()');
+            console.log('ERROR: Invalid user');
             throw err;
         }
         else {
             console.log("Input: " + req.body.email);
-            console.log("Type: " + typeof data);
-            console.log("Data: " + data);
-            console.log("Email: " + data[0].email);
+            console.log("Type: " + typeof user);
+            console.log("Data: " + user);
+            console.log("Email: " + user[0].email);
             console.log('-------------------------');
-            res.json(data)
 
-            // CONTINUE HERE TO HANDLE TOKEN AUTHENTICATION
+            if (userPassword != user[0].password) {
+                console.log('ERROR: Invalid password');
 
+            }
+            else {
+                const token = jwt.encode({ _id: user[0]._id }, secret);
+                console.log("Login Token: " + token);
+                var decoded = jwt.decode(token, secret);
+                console.log("Decoded: " + JSON.stringify(decoded));
+                return res.send({ user, token });
+                // return res.send(token);
+            }
         }
     })
 }
@@ -54,11 +69,17 @@ var StoreUserInfo = (req, res) => {
     });
 
     user.save((err, result) => {
+        console.log("Registered!");
         if (err) {
             res.json({ "msg": "Id must be unique" });
         }
         else {
-            res.json({ "msg": "User stored successfully" });
+            const token = jwt.encode({ _id: user._id }, secret);
+            console.log("Register Token: " + token);
+            var decoded = jwt.decode(token, secret);
+            console.log("Decoded: " + JSON.stringify(decoded));
+            return res.send({ user, token });
+            // return res.send(token);
         }
     });
 

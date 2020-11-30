@@ -47,11 +47,14 @@ export class AuthService {
   }
 
   public login(userData: any): Observable<any> {
-    // console.log("auth.service.ts: login() reached!");
-    // console.log(userData);
+    console.log("auth.service.ts - userData: " + JSON.stringify(userData));
     const URI = this.uriseg + '/login';
-    console.log(URI);
-    return this.http.post(URI, userData).pipe(map(token => {
+    console.log("URI: " + URI);
+    return this.http.post(URI, userData).pipe(map(data => {
+      console.log("auth.service.ts - User Data: " + JSON.stringify(data));
+      var token = JSON.parse(JSON.stringify(data)).token;
+      console.log("Token: " + token);
+      // return this.saveToken(data);
       return this.saveToken(token);
     }));
   }
