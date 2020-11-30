@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as moment from 'moment';
 import { User } from '../models/user';
+import { decode } from 'jwt-simple';
 
 const jwt = new JwtHelperService();
 
@@ -54,7 +55,6 @@ export class AuthService {
       console.log("auth.service.ts - User Data: " + JSON.stringify(data));
       var token = JSON.parse(JSON.stringify(data)).token;
       console.log("Token: " + token);
-      // return this.saveToken(data);
       return this.saveToken(token);
     }));
   }
@@ -63,6 +63,12 @@ export class AuthService {
     this.decodedToken = jwt.decodeToken(token);
     localStorage.setItem('auth_tkn', token);
     localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
+
+    this.decodedToken.exp = '365d';
+    console.log("Decoded Token: " + JSON.stringify(this.decodedToken));
+    console.log("Token Expires: " + jwt.getTokenExpirationDate(token));
+    console.log("Decoded Token Expires: " + this.decodedToken.exp);
+
     return token;
   }
 
@@ -75,7 +81,8 @@ export class AuthService {
 
   // Checks if current token is expired
   public isAuthenticated(): boolean {
-    return moment().isBefore(moment.unix(this.decodedToken.exp));
+    return (this.decodedToken.exp != null);
+    // return moment().isBefore(moment.unix(this.decodedToken.exp));
   }
 
   public getUsername(): string {
