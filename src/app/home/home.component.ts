@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Product } from '../models/product';
+import { ProductService } from '../services/ProductService';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   notify: string;
+  products: Product[];
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  constructor(private router: Router, private route: ActivatedRoute, public productService: ProductService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -19,6 +23,12 @@ export class HomeComponent implements OnInit {
         this.notify = 'You have been successfully loggedin. Welcome home';
       }
     });
+
+    this.productService.getProducts().subscribe(result => {
+      this.products = result;
+      console.log(this.products);
+    })
+
   }
 
 }

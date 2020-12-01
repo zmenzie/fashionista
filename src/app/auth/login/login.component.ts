@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../auth.service';
+import { onErrorResumeNext } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -44,13 +45,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.errors = [];
-    this.auth.login(this.loginForm.value).subscribe(token => {
-      this.router.navigate(['/'], { queryParams: { loggedin: 'success' } });
-    },
-      (errorResponse) => {
-        //this.errors.push(errorResponse.error.error);
-        console.log(errorResponse + ": " + errorResponse.error);
-      });
+      this.errors = [];
+      this.auth.login(this.loginForm.value).subscribe(token => {
+        this.router.navigate(['/'], { queryParams: { loggedin: 'success' } });
+      },
+        (errorResponse) => {
+          this.errors.push("Invalid username or password");
+        });
   }
+
+
 }

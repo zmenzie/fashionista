@@ -20,9 +20,9 @@ var LoginUser = (req, res) => {
     var userEmail = req.body.email;
     var userPassword = req.body.password;
     UserModel.find({ email: userEmail }, (err, user) => {
-        if (err) {
+        if (user == "") {
             console.log('ERROR: Invalid user');
-            throw err;
+            res.json({ "error": "Invalid email" });
         }
         else {
             console.log("Input: " + req.body.email);
@@ -33,7 +33,7 @@ var LoginUser = (req, res) => {
 
             if (userPassword != user[0].password) {
                 console.log('ERROR: Invalid password');
-
+                res.json({ "error": "Invalid password" });
             }
             else {
                 const token = jwt.encode({ _id: user[0]._id }, secret);

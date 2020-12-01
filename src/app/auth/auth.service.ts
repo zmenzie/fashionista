@@ -54,17 +54,19 @@ export class AuthService {
     return this.http.post(URI, userData).pipe(map(data => {
       console.log("auth.service.ts - User Data: " + JSON.stringify(data));
       var token = JSON.parse(JSON.stringify(data)).token;
+      var username = JSON.parse(JSON.stringify(data)).user[0].username;
       console.log("Token: " + token);
-      return this.saveToken(token);
+      return this.saveToken(token, username);
     }));
   }
 
-  private saveToken(token: any): any {
+  private saveToken(token: any, username: any): any {
     this.decodedToken = jwt.decodeToken(token);
     localStorage.setItem('auth_tkn', token);
     localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
 
     this.decodedToken.exp = '365d';
+    this.decodedToken.username = username;
     console.log("Decoded Token: " + JSON.stringify(this.decodedToken));
     console.log("Token Expires: " + jwt.getTokenExpirationDate(token));
     console.log("Decoded Token Expires: " + this.decodedToken.exp);
@@ -81,6 +83,9 @@ export class AuthService {
 
   // Checks if current token is expired
   public isAuthenticated(): boolean {
+    if (this.decodedToken == null) {
+      return null;
+    }
     return (this.decodedToken.exp != null);
     // return moment().isBefore(moment.unix(this.decodedToken.exp));
   }

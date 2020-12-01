@@ -37,8 +37,6 @@ export class CartComponent implements OnInit {
 						quantity: 1
 					};
 
-					// NEW STUFF BELOW
-
 					// True if cart is empty
 					console.log("if (" + JSON.parse(localStorage.getItem('cart')) + " == '')");
 					if (JSON.parse(localStorage.getItem('cart')) == '') {
@@ -51,25 +49,7 @@ export class CartComponent implements OnInit {
 					// False if cart has items
 					else {
 						let cart: any = JSON.parse(localStorage.getItem('cart'));
-						//console.log("Local Storage: " + JSON.parse(localStorage.getItem('cart'))[0]);
 						let index: string = "-1";
-						// for (var i = 0; i < cart.length; i++) {
-						// 	// let item: Item = JSON.parse(cart[i]);
-						// 	let item: Item = JSON.parse(cart[i]);
-						// 	console.log("Type: " + typeof item);
-						// 	console.log("Cart item " + i + " Reg: " + item);
-						// 	console.log("Cart item " + i + " Product: " + item.product);
-						// 	console.log("Cart item " + i + " Product ID: " + item.product.id);
-						// 	console.log("---------------------------------");
-						// 	console.log("Type: " + typeof cart[i]);
-						// 	console.log("Cart item " + i + " Reg: " + cart[i]);
-						// 	console.log("*---------------------------------*");
-						// 	// Break if item is already in cart
-						// 	if (item.product.id == id) {
-						// 		index = i;
-						// 		break;
-						// 	}
-						// }
 
 						let i = 0;
 						for (let cartElement of cart) {

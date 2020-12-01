@@ -9,31 +9,15 @@
 
 <body>
   <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #464646;">
-    <div class="container">
       <a routerLink="/" style="color: white" class="navbar-brand" routerLinkActive="active">Fashionista</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <ng-container *ngIf="!auth.isAuthenticated()">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Customer
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link" [routerLink]="['/products']">Products</a>
-                <a class="nav-link" [routerLink]="['/cart']">Cart</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" [routerLink]="['/products']">Products</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Admin
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
-                <a class="nav-link" [routerLink]="['/products-list']">Manage Products</a>
-                <a class="nav-link" [routerLink]="['/users-list']">Manage Users</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" style="color: white" [routerLink]="['/cart']">My Cart</a>
             </li>
             <li class="nav-item">
               <a routerLink="/auth/login" style="color: white" class="nav-link" routerLinkActive="active">
@@ -47,23 +31,34 @@
             </li>
           </ng-container>
           <ng-container *ngIf="auth.isAuthenticated()">
+
             <li class="nav-item">
-              <a class='nav-link' [routerLink]="['/services']">Services</a>
+              <a class='nav-link' style="color: white" [routerLink]="['/services']">Services</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
+                <a class="nav-link" [routerLink]="['/products-list']">Manage Products</a>
+                <a class="nav-link" [routerLink]="['/users-list']">Manage Users</a>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <a class="nav-link" style="color: white">
                 {{ auth.getUsername() }}
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pointer" (click)="logout()">
+              <a class="nav-link pointer" style="color: white" (click)="logout()">
                 Logout
               </a>
             </li>
           </ng-container>
         </ul>
       </div>
-    </div>
   </nav>
 
 </body>
