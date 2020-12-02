@@ -1,3 +1,27 @@
 .marge {
   margin-top: 1%;
 }
+
+body {
+  background-image: url('../../assets/images/pattern.png');
+  height: auto;
+  background-size: 88px 75px;
+  /* background-size: cover; */
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.parent {
+  min-height: 200px;
+}
+
+.carousel-item img {
+  display: block;
+  margin: auto;
+}

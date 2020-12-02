@@ -1,0 +1,6 @@
+body {
+    background-image: url('../../../assets/images/pattern.png');
+    height: auto;
+    background-size: 88px 75px;
+    /* background-size: cover; */
+  }

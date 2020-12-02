@@ -1,40 +1,77 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5">
-      <h1 class="page-title">Login</h1>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-group">
-          <div *ngIf="notify" class="alert alert-success">
-            {{ notify }}
-          </div>
-          <div *ngIf="errors.length > 0" class="alert alert-danger">
-            <p *ngFor="let error of errors">
-              {{ error }}
-            </p>
-          </div>
-          <label for="email">Email</label>
-          <input type="email" class="form-control" formControlName="email">
-        </div>
-        <div *ngIf="isValidInput('email')" class="alert alert-danger">
-          <div *ngIf="loginForm.controls['email'].errors.required">
-            Email is required.
-          </div>
-          <div *ngIf="loginForm.controls['email'].errors.pattern">
-            Must be a valid email format.
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" formControlName="password">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="login.component.css">
+</head>
+
+<body>
+  <div class="container">
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div class="row">
+      <div class="col"></div>
+      <div class="jumbotron">
+        <div class="col">
+          <h1 class="page-title">Sign in:</h1>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <div *ngIf="notify" class="alert alert-success">
+                {{ notify }}
+              </div>
+              <div *ngIf="errors.length > 0" class="alert alert-danger">
+                <p *ngFor="let error of errors">
+                  {{ error }}
+                </p>
+              </div>
+              <label for="email">Email</label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div *ngIf="isValidInput('email')" class="alert alert-danger">
+              <div *ngIf="loginForm.controls['email'].errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="loginForm.controls['email'].errors.pattern">
+                Must be a valid email format.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" formControlName="password">
+            </div>
+            <div *ngIf="isValidInput('password')" class="alert alert-danger">
+              <div *ngIf="loginForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+            <div>
+              <button [disabled]="!loginForm.valid" type="submit" class="btn btn-warning" style="float: left">Sign
+                In</button>
+              <br><br>
+              Don't have an account yet? <a routerLink="/auth/register">Register now!</a>
+            </div>
+            <br>
+          </form>
         </div>
-        <div *ngIf="isValidInput('password')" class="alert alert-danger">
-          <div *ngIf="loginForm.controls['password'].errors.required">
-            Password is required.
-          </div>
-        </div>
-        <button [disabled]="!loginForm.valid" type="submit" class="btn btn-warning">Sign In</button>
-      </form>
+      </div>
+      <div class="col"></div>
+      <!-- end row -->
     </div>
+    <!-- end container -->
   </div>
-</div>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
+</body>
+
+</html>
