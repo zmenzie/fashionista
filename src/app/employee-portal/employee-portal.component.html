@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="register.component.css">
+  <link rel="stylesheet" href="employee-portal.component.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
       <div class="col"></div>
       <div class="col">
         <div class="jumbotron">
-          <h4 class="page-title">Create an account:</h4>
+          <h4 class="page-title">Create employee account:</h4>
           <form #registerForm="ngForm">
             <div class="form-group">
               <div *ngIf="errors.length > 0" class="alert alert-danger">
@@ -82,10 +82,7 @@
               </div>
             </div>
             <div class="container">
-              <button (click)="register()" type="submit" class="btn btn-warning" [disabled]="!registerForm.form.valid"
-                style="float: left">Register</button>
-              <button type="button" class="btn btn-primary" [routerLink]="['/employee-portal']" style="float: right">Employee
-                Portal</button>
+              <button (click)="register()" type="submit" class="btn btn-warning" [disabled]="!registerForm.form.valid">Register</button>
             </div>
             <br><br><br>
           </form>

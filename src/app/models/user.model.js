@@ -7,7 +7,8 @@ var UserSchemaRef = new UserSchema({
     _id:String,
     username:String,
     email:String,
-    password:String
+    password:String,
+    type:String
 });
 
 var UserModel = mongoose.model("User",UserSchemaRef);

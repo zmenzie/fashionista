@@ -24,6 +24,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     EditProductComponent,
     UsersListComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    EmployeePortalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-employee-portal',
+  templateUrl: './employee-portal.component.html',
+  styleUrls: ['./employee-portal.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class EmployeePortalComponent implements OnInit {
 
   formData: any = {};
   errors: any = [];
+
+
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -19,8 +21,9 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     console.log(JSON.stringify(this.formData));
-    this.formData.type = "customer";
+    this.formData.type = "employee";
     console.log(JSON.stringify(this.formData));
+
     this.errors = [];
     this.auth.register(this.formData)
       .subscribe(() => {

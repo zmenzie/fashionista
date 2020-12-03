@@ -55,18 +55,24 @@ export class AuthService {
       console.log("auth.service.ts - User Data: " + JSON.stringify(data));
       var token = JSON.parse(JSON.stringify(data)).token;
       var username = JSON.parse(JSON.stringify(data)).user[0].username;
+      var type = JSON.parse(JSON.stringify(data)).user[0].type;
       console.log("Token: " + token);
-      return this.saveToken(token, username);
+
+      // Save the account type here:
+      
+
+      return this.saveToken(token, username, type);
     }));
   }
 
-  private saveToken(token: any, username: any): any {
+  private saveToken(token: any, username: any, type: any): any {
     this.decodedToken = jwt.decodeToken(token);
     localStorage.setItem('auth_tkn', token);
     localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
 
     this.decodedToken.exp = '365d';
     this.decodedToken.username = username;
+    this.decodedToken.type = type;
     console.log("Decoded Token: " + JSON.stringify(this.decodedToken));
     console.log("Token Expires: " + jwt.getTokenExpirationDate(token));
     console.log("Decoded Token Expires: " + this.decodedToken.exp);
@@ -88,6 +94,15 @@ export class AuthService {
     }
     return (this.decodedToken.exp != null);
     // return moment().isBefore(moment.unix(this.decodedToken.exp));
+  }
+
+  public isEmployee(): boolean {
+    if (this.decodedToken.type == 'employee') {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   public getUsername(): string {

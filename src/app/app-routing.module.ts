@@ -18,24 +18,26 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
 
 // AuthGuard Enforced HERE: Controls what type of user can access what page.
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'users-list', component: UsersListComponent },
-  { path: 'add-user', component: AddUserComponent },
-  { path: 'edit-user', component: EditUserComponent },
+  { path: 'users-list', component: UsersListComponent, canActivate: [AuthGuard] },
+  { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard] },
+  { path: 'edit-user', component: EditUserComponent, canActivate: [AuthGuard] },
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
-  { path: 'companies-list', component: CompaniesListComponent },
-  { path: 'add-company', component: AddCompanyComponent },
-  { path: 'edit-company', component: EditCompanyComponent },
-  { path: 'products', component: ProductComponent },
-  { path: 'products-list', component: ProductsListComponent },
-  { path: 'add-product', component: AddProductComponent },
-  { path: 'edit-product', component: EditProductComponent },
-	{ path: 'cart', component: CartComponent }
+  { path: 'companies-list', component: CompaniesListComponent, canActivate: [AuthGuard] },
+  { path: 'add-company', component: AddCompanyComponent, canActivate: [AuthGuard] },
+  { path: 'edit-company', component: EditCompanyComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
+  { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard] },
+  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'edit-product', component: EditProductComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'employee-portal', component: EmployeePortalComponent }
 ];
 
 @NgModule({

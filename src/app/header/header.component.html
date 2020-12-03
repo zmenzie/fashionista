@@ -9,56 +9,66 @@
 
 <body>
   <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #464646;">
-      <a routerLink="/" style="color: white" class="navbar-brand" routerLinkActive="active">F A S H I O N I S T A</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <ng-container *ngIf="!auth.isAuthenticated()">
-            <li class="nav-item">
-              <a class="nav-link" style="color: white" [routerLink]="['/products']">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" style="color: white" [routerLink]="['/cart']">My Cart</a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/auth/login" style="color: white" class="nav-link" routerLinkActive="active">
-                Login
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/auth/register" style="color: white" class="nav-link">
-                Register
-              </a>
-            </li>
-          </ng-container>
-          <ng-container *ngIf="auth.isAuthenticated()">
+    <a routerLink="/" style="color: white" class="navbar-brand" routerLinkActive="active">F A S H I O N I S T A</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="!auth.isAuthenticated()">
+          <li class="nav-item">
+            <a routerLink="/auth/login" style="color: white" class="nav-link" routerLinkActive="active">
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/auth/register" style="color: white" class="nav-link">
+              Register
+            </a>
+          </li>
+        </ng-container>
 
+        <!-- If the user token is authenticated  -->
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <!-- If the user is an employee  -->
+          <ng-container *ngIf="auth.isEmployee()">
             <li class="nav-item">
               <a class='nav-link' style="color: white" [routerLink]="['/services']">Services</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Admin
+                Management
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
-                <a class="nav-link" [routerLink]="['/products-list']">Manage Products</a>
-                <a class="nav-link" [routerLink]="['/users-list']">Manage Users</a>
+                <a class="nav-link" [routerLink]="['/companies-list']">Companies</a>
+                <a class="nav-link" [routerLink]="['/products-list']">Products</a>
+                <a class="nav-link" [routerLink]="['/users-list']">Users</a>
               </div>
             </li>
+          </ng-container>
+
+          <!-- If the user is NOT an employee  -->
+          <ng-container *ngIf="!auth.isEmployee()">
             <li class="nav-item">
-              <a class="nav-link" style="color: white">
-                {{ auth.getUsername() }}
-              </a>
+              <a class="nav-link" style="color: white" [routerLink]="['/products']">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pointer" style="color: white" (click)="logout()">
-                Logout
-              </a>
+              <a class="nav-link" style="color: white" [routerLink]="['/cart']">My Cart</a>
             </li>
           </ng-container>
-        </ul>
-      </div>
+
+          <!-- Navigation content for all users  -->
+          <li class="nav-item">
+            <a class="nav-link" style="color: white">
+              {{ auth.getUsername() }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" style="color: white" (click)="logout()">
+              Logout
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
   </nav>
 
 </body>

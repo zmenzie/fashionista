@@ -17,6 +17,7 @@ export class EditUserComponent implements OnInit {
   username: string;
   email: string;
   password: string;
+  type: string;
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -24,6 +25,7 @@ export class EditUserComponent implements OnInit {
       this.username = params['username'];
       this.email = params['email'];
       this.password = params['password'];
+      this.type = params['type'];
       // console.log(this.username)
       // console.log(this.email)
     })
@@ -39,7 +41,8 @@ export class EditUserComponent implements OnInit {
       username: this.username,
       email: this.email,
       password: this.password,
-      passwordConfirmation: this.password
+      passwordConfirmation: this.password,
+      type: this.type
     }
 
     console.log(this.formData);

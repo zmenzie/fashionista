@@ -41,7 +41,6 @@ var LoginUser = (req, res) => {
                 var decoded = jwt.decode(token, secret);
                 console.log("Decoded: " + JSON.stringify(decoded));
                 return res.send({ user, token });
-                // return res.send(token);
             }
         }
     })
@@ -65,7 +64,8 @@ var StoreUserInfo = (req, res) => {
         _id: req.body._id,
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        type: req.body.type
     });
 
     user.save((err, result) => {
@@ -79,7 +79,6 @@ var StoreUserInfo = (req, res) => {
             var decoded = jwt.decode(token, secret);
             console.log("Decoded: " + JSON.stringify(decoded));
             return res.send({ user, token });
-            // return res.send(token);
         }
     });
 
@@ -90,6 +89,7 @@ var UpdateUserInfo = (req, res) => {
     var updateUsername = req.body.username;
     var updateEmail = req.body.email;
     var updatePassword = req.body.password;
+    var updateType = req.body.type;
 
     console.log("req.body: " + JSON.stringify(req.body));
     console.log("ID: " + JSON.stringify(updateId));
@@ -97,7 +97,7 @@ var UpdateUserInfo = (req, res) => {
     console.log("Email: " + JSON.stringify(updateEmail));
     console.log("Password: " + JSON.stringify(updatePassword));
 
-    UserModel.update({ _id: updateId }, { $set: { username: updateUsername, email: updateEmail, password: updatePassword } }, (err, result) => {
+    UserModel.update({ _id: updateId }, { $set: { username: updateUsername, email: updateEmail, password: updatePassword, type: updateType } }, (err, result) => {
         if (err) res.json({ "msg": "Invalid data" });
         if (result.nModified > 0) {
             console.log("success")
