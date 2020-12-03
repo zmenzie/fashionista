@@ -1,23 +1,52 @@
-<div class="container">
-    <h3>Product List</h3>
-    <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Photo</th>
-            <th>Buy</th>
-        </tr>
-        <tr *ngFor="let product of products">
-            <td>{{product._id}}</td>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>
-                <img src="{{product.photo}}" width="250" height="100">
-            </td>
-            <td>
-                <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
-            </td>
-        </tr>
-    </table>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="product.component.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h3>Product List</h3>
+            <table border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                    <th>Buy</th>
+                </tr>
+                <tr *ngFor="let product of products">
+                    <td>{{product._id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>
+                        <img src="{{product.photo}}" width="250" height="100">
+                    </td>
+                    <td>
+                        <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div class="container">
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

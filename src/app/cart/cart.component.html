@@ -1,38 +1,77 @@
-<div class="container">
-    <h3>My Cart</h3>
-    <table border="1">
-        <tr>
-            <th>Option</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Photo</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        <tr *ngFor="let item of items">
-            <td align="center">
-                <a (click)="remove(item.product._id)">&#10060;</a>
-            </td>
-            <td>{{item.product[0]._id}}</td>
-            <td>{{item.product[0].name}}</td>
-            <td>
-                <img src="{{item.product[0].photo}}" width="250" height="100">
-            </td>
-            <td>{{item.product[0].price}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.product[0].price * item.quantity}}</td>
-        </tr>
-        <tr>
-            <td colspan="6" align="right">Total</td>
-            <td>{{total}}</td>
-        </tr>
-    </table>
-    <hr>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url('../../assets/images/pattern.png');
+            background-repeat: repeat;
+            /* height: auto; */
+            background-size: 88px 75px;
+            /* background-size: contain; */
+        }
+    </style>
+
     <div class="container">
-        <button type="button" class="btn btn-primary" (click)="checkOut()" style="float: left">Check Out</button>
-        <button type="button" class="btn btn-secondary" [routerLink]="['/products']" style="float: right">Back to Products</button>
+        <div class="jumbotron">
+            <h3>My Cart</h3>
+            <table border="1">
+                <tr>
+                    <th>Option</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                </tr>
+                <tr *ngFor="let item of items">
+                    <td align="center">
+                        <a (click)="remove(item.product._id)">&#10060;</a>
+                    </td>
+                    <td>{{item.product[0]._id}}</td>
+                    <td>{{item.product[0].name}}</td>
+                    <td>
+                        <img src="{{item.product[0].photo}}" width="250" height="100">
+                    </td>
+                    <td>{{item.product[0].price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.product[0].price * item.quantity}}</td>
+                </tr>
+                <tr>
+                    <td colspan="6" align="right">Total</td>
+                    <td>{{total}}</td>
+                </tr>
+            </table>
+            <hr>
+            <div class="container">
+                <button type="button" class="btn btn-primary" (click)="checkOut()" style="float: left">Check
+                    Out</button>
+                <button type="button" class="btn btn-secondary" [routerLink]="['/products']" style="float: right">Back
+                    to
+                    Products</button>
+            </div>
+
+            {{cartInfo}}
+            <br><br>
+        </div>
     </div>
-    
-    {{cartInfo}}
-</div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div class="container">
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
