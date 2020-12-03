@@ -10,8 +10,7 @@
                         </ul>
                     </div>
                     <label for="_id">Id (Cannot be changed)</label>
-                    <input type="text" class="form-control" [(ngModel)]="this._id" name="id"
-                        #id="ngModel" required>
+                    <input type="text" class="form-control" [(ngModel)]="this._id" name="id" #id="ngModel" required>
                 </div>
                 <div *ngIf="id.invalid && (id.dirty || id.touched)" class="alert alert-danger">
                     <div *ngIf="id.errors.required">
@@ -26,8 +25,8 @@
                         </ul>
                     </div>
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" [(ngModel)]="this.name" name="pname"
-                        #pname="ngModel" required>
+                    <input type="text" class="form-control" [(ngModel)]="this.name" name="pname" #pname="ngModel"
+                        required>
                 </div>
                 <div *ngIf="pname.invalid && (pname.dirty || pname.touched)" class="alert alert-danger">
                     <div *ngIf="pname.errors.required">
@@ -42,8 +41,8 @@
                         </ul>
                     </div>
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" [(ngModel)]="this.price" name="pprice"
-                        #pprice="ngModel" required>
+                    <input type="text" class="form-control" [(ngModel)]="this.price" name="pprice" #pprice="ngModel"
+                        required>
                 </div>
                 <div *ngIf="pprice.invalid && (pprice.dirty || pprice.touched)" class="alert alert-danger">
                     <div *ngIf="pprice.errors.required">
@@ -58,8 +57,8 @@
                         </ul>
                     </div>
                     <label for="name">Photo</label>
-                    <input type="text" class="form-control" [(ngModel)]="this.photo" name="pphoto"
-                        #pphoto="ngModel" required>
+                    <input type="text" class="form-control" [(ngModel)]="this.photo" name="pphoto" #pphoto="ngModel"
+                        required>
                 </div>
                 <div *ngIf="pphoto.invalid && (pphoto.dirty || pphoto.touched)" class="alert alert-danger">
                     <div *ngIf="pphoto.errors.required">
@@ -69,7 +68,14 @@
                 <div class="container">
                     <button (click)="updateProduct()" style="float: left" type="submit" class="btn btn-warning"
                         [disabled]="!registerForm.form.valid">Update</button>
-                    <button (click)="deleteProduct()" style="float: right" type="submit" class="btn btn-danger">Delete Product</button> 
+                    <button (click)="deleteProduct()" style="float: right" type="submit" class="btn btn-danger">Delete
+                        Product</button>
+                </div>
+                <br><br>
+                <hr>
+                <div class="container">
+                    <button type="button" class="btn btn-secondary" [routerLink]="['/products-list']"
+                        style="float: left">Cancel</button>
                 </div>
             </form>
         </div>

@@ -25,19 +25,28 @@ import { EmployeePortalComponent } from './employee-portal/employee-portal.compo
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'users-list', component: UsersListComponent, canActivate: [AuthGuard] },
-  { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard] },
-  { path: 'edit-user', component: EditUserComponent, canActivate: [AuthGuard] },
   { path: 'services', component: ServicesComponent, canActivate: [AuthGuard] },
+  { path: 'employee-portal', component: EmployeePortalComponent },
+
+  // { path: 'users-list', component: UsersListComponent, canActivate: [AuthGuard] },
+  // { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard] },
+  // { path: 'edit-user', component: EditUserComponent, canActivate: [AuthGuard] },
+
+  { path: 'users-list', component: UsersListComponent},
+  { path: 'add-user', component: AddUserComponent},
+  { path: 'edit-user', component: EditUserComponent},
+
+
   { path: 'companies-list', component: CompaniesListComponent, canActivate: [AuthGuard] },
   { path: 'add-company', component: AddCompanyComponent, canActivate: [AuthGuard] },
   { path: 'edit-company', component: EditCompanyComponent, canActivate: [AuthGuard] },
-  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
+
   { path: 'products-list', component: ProductsListComponent, canActivate: [AuthGuard] },
   { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
   { path: 'edit-product', component: EditProductComponent, canActivate: [AuthGuard] },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
-  { path: 'employee-portal', component: EmployeePortalComponent }
+
+  { path: 'products', component: ProductComponent},
+  { path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

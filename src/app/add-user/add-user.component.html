@@ -69,17 +69,17 @@
 
         <div class="form-group">
           <label for="type">Account Type</label>
-          <input type="text" class="form-control" [(ngModel)]="formData.type"
-            #type="ngModel" name="type" required>
+          <input type="text" class="form-control" [(ngModel)]="formData.type" #type="ngModel" name="type" required>
         </div>
-        <div *ngIf="type.invalid && (type.dirty || type.touched)"
-          class="alert alert-danger">
+        <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger">
           <div *ngIf="type.errors.required">
             Account type is required
           </div>
         </div>
         <button (click)="register()" type="submit" class="btn btn-warning"
           [disabled]="!registerForm.form.valid">Add</button>
+        <button type="button" class="btn btn-secondary" [routerLink]="['/users-list']"
+          style="float: right">Cancel</button>
       </form>
     </div>
   </div>
