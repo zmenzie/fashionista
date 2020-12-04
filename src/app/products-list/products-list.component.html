@@ -3,19 +3,32 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Photo</th>
+                <th style="width: 5%">ID</th>
+                <th style="width: 15%">Name</th>
+                <th style="width: 10%">Price</th>
+                <th style="width: 40%">Photo</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let product of products;">
+            <tr *ngFor="let product of products; let i = index">
                 <td>{{product._id}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.price}}</td>
-                <td><img src="{{product.photo}}" width="250" height="100"></td>
-                <td><a [routerLink]="['/edit-product']" [queryParams]= 
+                <td>
+                    <p>
+                        <a class="btn btn-secondary" data-toggle="collapse" href="#id{{i}}" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Expand image
+                        </a>
+                    </p>
+                    <div class="collapse" id="id{{i}}">
+                        <div class="col-sm-12">
+                            <div class="card card-body">
+                                <img src="{{product.photo}}" width="100%" height="100%">
+                            </div>
+                        </div>
+                    </div>
+                </td>                <td><a [routerLink]="['/edit-product']" [queryParams]= 
                     "{_id:product._id, name:product.name, price:product.price, photo:product.photo}">Edit</a>
                 </td>
             </tr>

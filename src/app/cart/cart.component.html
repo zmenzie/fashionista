@@ -26,8 +26,8 @@
                     <th style="width: 5%">Option</th>
                     <th style="width: 5%">Id</th>
                     <th style="width: 15%">Name</th>
-                    <th style="width: 40%">Photo</th>
                     <th style="width: 10%">Price</th>
+                    <th style="width: 40%">Photo</th>
                     <th style="width: 7.5%">Buy</th>
                     <th>Sub Total</th>
                 </thead>
@@ -38,6 +38,7 @@
                         </td>
                         <td>{{item.product[0]._id}}</td>
                         <td>{{item.product[0].name}}</td>
+                        <td>{{item.product[0].price}}</td>
                         <td>
                             <p>
                                 <a class="btn btn-secondary" data-toggle="collapse" href="#id{{i}}"
@@ -51,7 +52,6 @@
                                 </div>
                             </div>
                         </td>
-                        <td>{{item.product[0].price}}</td>
                         <td>{{item.quantity}}</td>
                         <td>{{item.product[0].price * item.quantity}}</td>
                     </tr>
