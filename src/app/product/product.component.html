@@ -14,11 +14,11 @@
             <h4>Product List</h4>
             <table class="table table-striped">
                 <thead>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Photo</th>
-                    <th>Buy</th>
+                    <th style="width: 5%">Id</th>
+                    <th style="width: 15%">Name</th>
+                    <th style="width: 10%">Price</th>
+                    <th style="width: 40%">Photo</th>
+                    <th style="width: 7.5%">Buy</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of products; let i = index">
@@ -27,16 +27,20 @@
                         <td>{{product.price}}</td>
                         <td>
                             <p>
-                                <a class="btn btn-secondary" data-toggle="collapse" href="#id{{i}}"
-                                    role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <a class="btn btn-secondary" data-toggle="collapse" href="#id{{i}}" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample">
                                     Expand image
                                 </a>
                             </p>
                             <div class="collapse" id="id{{i}}">
-                                <div class="card card-body">
-                                    <img src="{{product.photo}}" width="250" height="100">
+                                <div class="col-sm-9">
+                                    <div class="card card-body">
+                                        <img src="{{product.photo}}" width="100%" height="100%">
+                                    </div>
                                 </div>
-                            </div>                        </td>
+                            </div>
+                        </td>
+
                         <td>
                             <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
                         </td>
