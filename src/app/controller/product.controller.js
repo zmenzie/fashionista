@@ -26,7 +26,8 @@ var StoreProductInfo = (req, res) => {
         _id: req.body.id,
         name: req.body.name,
         price: req.body.price,
-        photo: req.body.photo
+        photo: req.body.photo,
+        type: req.body.type
     });
 
     product.save((err, result) => {
@@ -45,13 +46,15 @@ var UpdateProductInfo = (req, res) => {
     var updateName = req.body.name;
     var updatePrice = req.body.price;
     var updatePhoto = req.body.photo;
+    var updateType = req.body.type;
 
     console.log("ID: " + JSON.stringify(updateId));
     console.log("Name: " + JSON.stringify(updateName));
     console.log("Price: " + JSON.stringify(updatePrice));
     console.log("Photo: " + JSON.stringify(updatePhoto));
+    console.log("Photo: " + JSON.stringify(updateType));
 
-    ProductModel.update({ _id: updateId }, { $set: { name: updateName, price: updatePrice, photo: updatePhoto } }, (err, result) => {
+    ProductModel.update({ _id: updateId }, { $set: { name: updateName, price: updatePrice, photo: updatePhoto, type: updateType } }, (err, result) => {
         if (err) res.json({"msg":"Invalid data"});
         if (result.nModified>0) {
             res.json({"msg":"Record updated successfully"});

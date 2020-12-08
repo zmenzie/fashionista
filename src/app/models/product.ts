@@ -4,5 +4,7 @@ export class Product {
         public _id:string,
         public name:string,
         public price:number, 
-        public photo:string){}
+        public photo:string,
+        public type:string
+        ){}
 }

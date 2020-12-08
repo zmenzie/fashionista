@@ -24,5 +24,13 @@ export class ProductComponent implements OnInit {
 		})
 	}
 
+	// Potential methods for buttons to expand/close all images
+	expandAll() {
+
+	}
+
+	closeAll() {
+
+	}
 
 }

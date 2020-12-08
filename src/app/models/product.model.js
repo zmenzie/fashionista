@@ -7,7 +7,8 @@ var ProductSchemaRef = new ProductSchema({
     _id:String,
     name:String,
     price:Number,
-    photo:String
+    photo:String,
+    type:String
 });
 
 var ProductModel = mongoose.model("Product",ProductSchemaRef);
